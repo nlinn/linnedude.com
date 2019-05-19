@@ -5,7 +5,7 @@
     "@rails/actiontext": "^6.0.0-rc1",
     "@rails/webpacker": "^4.0.2",
     "trix": "^1.0.0",
-    "tailwindcss": "^1.0.1",
+    "tailwindcss": "^1.0.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.3.1"
