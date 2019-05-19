@@ -1,0 +1,27 @@
+<div class="text-center mb-5"><h1>Notes</h1></div>
+
+<% @posts.each do |post| %>
+  <article class="h-entry">
+
+
+  <a href="/notes/<%= post.slug %>" style="color: inherit; text-decoration: inherit;">
+    <div class=" flex justify-center mb-5">
+
+      <div class="rounded overflow-hidden shadow-lg max-w-2xl w-full bg-white">
+        <div class="px-6 py-4">
+          <div class="h-card p-author font-bold text-base" rel="author">
+            <span class="p-name">Niels Linnemann</span>
+          </div>
+          <p class="text-gray-700 text-base">
+            <%= post.content %>
+          </p>
+          <% if post.published_at.present? %>
+            <time class="dt-published uppercase text-gray-500 text-xs mt-2" datetime="<%= post.published_at.as_json %>"><%= l(post.published_at, format: :default) %></time>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  </article>
+<% end %>

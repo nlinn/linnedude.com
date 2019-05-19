@@ -1,11 +1,11 @@
 class NielsworkshopController < ApplicationController
 
   def index
-    @posts = Post.published.order(published_at: :desc)
+    @posts = Post.nielsworkshop.published.order(published_at: :desc)
   end
 
   def show
-    @post = Post.find_by_slug(params[:id])
+    @post = Post.nielsworkshop.find_by_slug(params[:id])
     render :show
   end
 

@@ -1,11 +1,11 @@
-<h1>Posts#index</h1>
+<div class="text-center"><h1>Posts#index</h1></div>
 
 <%= link_to 'add post', new_post_path, class: "my-button" %>
 <% Post.all.each do |post| %>
 
   <div class="flex m-3">
     <div class="flex-1 bg-gray-400"><%= link_to post.title, post %></div>
-    <div class="flex-1 bg-blue">
+    <div class="flex-1 bg-blue"><%= post.category %> <%= post.published %>
     </div>
     <div class="flex-1 bg-green">
       <%= link_to 'edit', edit_post_path(post) %>

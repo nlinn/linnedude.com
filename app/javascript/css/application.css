@@ -6,12 +6,41 @@ a {
   @apply text-blue-600 underline;
 }
 
+input[type=submit] {
+  @apply bg-blue-500 text-white font-bold py-1 px-2 rounded;
+}
+
+input[type=submit]:hover {
+  @apply bg-blue-700;
+}
+
+input[type=email], input[type=text], input[type=password] {
+  @apply border rounded px-2 py-1;
+}
+
 .my-button {
   @apply bg-blue-500 text-white font-bold py-1 px-2 rounded;
 }
 
 .my-button:hover {
   @apply bg-blue-700;
+}
+
+div.sign-in {
+  margin: 1rem auto;
+  width: 200px;
+}
+
+div.text-field, div.password-field, div.submit-field {
+  @apply mb-3;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #eee;
 }
 
 @tailwind utilities;

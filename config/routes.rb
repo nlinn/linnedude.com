@@ -14,10 +14,13 @@ Rails.application.routes.draw do
   #get "/sign_up" => "clearance/users#new", as: "sign_up"
   root :to => 'home#index'
 
-  resources :posts, except: [:show]
+  resources :posts
 
   get '/nielsworkshop'      => 'nielsworkshop#index'
   get '/nielsworkshop/:id'  => 'nielsworkshop#show'
 
-  get '/:category/:id' => 'posts#show'
+  get '/notes'      => 'notes#index'
+  get '/notes/:id'  => 'notes#show'
+
+  #get '/:category/:id' => 'posts#show'
 end
