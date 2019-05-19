@@ -9,6 +9,7 @@ gem 'webpacker'
 gem 'friendly_slug'
 gem "clearance"
 gem 'mini_magick'
+gem 'aws-sdk-s3'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
