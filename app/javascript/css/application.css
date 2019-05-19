@@ -1,0 +1,17 @@
+@tailwind base;
+
+@tailwind components;
+
+a {
+  @apply text-blue-600 underline;
+}
+
+.my-button {
+  @apply bg-blue-500 text-white font-bold py-1 px-2 rounded;
+}
+
+.my-button:hover {
+  @apply bg-blue-700;
+}
+
+@tailwind utilities;

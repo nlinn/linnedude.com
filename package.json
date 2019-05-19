@@ -1,0 +1,13 @@
+{
+  "name": "linnedude_com",
+  "private": true,
+  "dependencies": {
+    "@rails/actiontext": "^6.0.0-rc1",
+    "@rails/webpacker": "^4.0.2",
+    "trix": "^1.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^1.0.1",
+    "webpack-dev-server": "^3.3.1"
+  }
+}
