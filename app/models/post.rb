@@ -9,8 +9,8 @@ class Post < ApplicationRecord
 
   enum category: {nielsworkshop: 0, notes: 1}
 
-  before_save :set_published_at, if: :published
-  before_validation :set_title
+  #before_save :set_published_at, if: :published
+  #before_validation :set_title
 
   scope :published, -> {
     where(published: true)
