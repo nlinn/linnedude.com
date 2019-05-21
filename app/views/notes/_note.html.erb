@@ -9,7 +9,7 @@
           <div class="text-sm">
             <p class="p-name text-gray-900 font-bold leading-none">Niels Linnemann</p>
             <% if post.published_at.present? %>
-              <time class="dt-published uppercase text-gray-500 text-xs mt-2" datetime="<%= post.published_at.as_json %>"><%= l(post.published_at, format: :default) %></time>
+              <time class="dt-published uppercase text-gray-500 text-xs mt-2" datetime="<%= post.published_at.strftime("%Y-%m-%dT%H:%M:%S") %>"><%= l(post.published_at, format: :default) %></time>
             <% end %>
           </div>
         </div>
