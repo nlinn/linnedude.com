@@ -3,8 +3,14 @@
 @tailwind components;
 
 a {
-  @apply text-blue-600 underline;
+  @apply text-blue-600;
 }
+
+a:hover {
+
+  background-image: linear-gradient(to right, #b4e7f8, #EBFBFF);
+}
+
 
 input[type=submit] {
   @apply bg-blue-500 text-white font-bold py-1 px-2 rounded;
