@@ -6,7 +6,7 @@ ruby '2.5.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0.rc1'
 gem 'webpacker'
-gem 'friendly_slug'
+#gem 'friendly_slug'
 gem "clearance"
 gem 'mini_magick'
 gem 'aws-sdk-s3'
