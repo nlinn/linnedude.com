@@ -9,4 +9,7 @@ class NielsworkshopController < ApplicationController
     render :show
   end
 
+  def links
+  end
+
 end

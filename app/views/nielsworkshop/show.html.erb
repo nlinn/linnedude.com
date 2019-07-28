@@ -1,23 +1,11 @@
-<a href="/nielsworkshop" class="my-4">up</a>
-
+<a href="/nielsworkshop" class="my-4">
+  <div class="flex justify-center mb-4">
+    <div class="w-full max-w-sm rounded overflow-hidden bg-gray-300 mx-auto text-center uppercase text-xs py-2">home
+      </div>
+  </div>
+</a>
 <% if @post.draft? %>
   <div class="text-red">DRAFT</div>
 <% end %>
 
-<div class="flex justify-center mb-4">
-
-  <div class="max-w-sm rounded overflow-hidden shadow-lg">
-    <% if @post.images.any? %>
-      <%= image_tag @post.images.first, class: "w-full" %>
-    <% end %>
-    <div class="px-6 py-4">
-      <% if @post.title.present? %>
-        <div class="font-bold text-xl mb-2"><%= @post.title %></div>
-      <% end %>
-      <p class="text-gray-700 text-base">
-        <%= @post.content %>
-      </p>
-      <p class="uppercase text-gray-500 text-xs mt-2"><%= @post.published_at.present? ? l(@post.published_at, format: :default) : '' %></p>
-    </div>
-  </div>
-</div>
+<%= render 'post_card', post: @post %>

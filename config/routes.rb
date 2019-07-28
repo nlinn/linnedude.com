@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :posts
 
   get '/nielsworkshop'      => 'nielsworkshop#index'
+  get '/nielsworkshop/links'  => 'nielsworkshop#links'
   get '/nielsworkshop/:id'  => 'nielsworkshop#show'
 
   get '/notes'      => 'notes#index'
