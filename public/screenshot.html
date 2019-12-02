@@ -24,7 +24,7 @@
         if (event.keyCode === shiftKey) {
           const now = window.performance.now();
           if (now - lastShiftPressed < 300) {
-            document.getElementById("message").innerHTML = "Please respect my privacy and don't take screenshots of me :-)";
+            document.getElementById("message").innerHTML = "2 consecutive 'shift' keyup events have been detected (see source code for details)";
             document.getElementById("reset").innerHTML = "<a href='' onclick='document.getElementById(\"message\").innerHTML=null;'>try again</a>";
           }
           lastShiftPressed = now;
