@@ -1,0 +1,30 @@
+<% if @label.errors.any? %>
+  <%= @label.errors.full_messages %>
+<% end %>
+
+<%= form_with model: @label, local: true  do |form| %>
+  <p class="mb-4">
+    <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </p>
+  <p class="mb-4">
+    <%= form.label :sort, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.text_field :sort, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </p>
+  <p class="mb-4">
+    <%= form.label :bg_color, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.text_field :bg_color, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </p>
+  <p class="mb-4">
+    <%= form.label :text_color, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.text_field :text_color, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </p>
+
+  <p class="mb-4">
+    <%= form.check_box :public %>
+    <%= form.label :public, class: "text-gray-700 text-sm font-bold mb-2" %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

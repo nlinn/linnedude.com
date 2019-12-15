@@ -1,0 +1,18 @@
+<% post = @post %>
+<div class="flex justify-center mb-4">
+
+  <div class="max-w-xl overflow-hidden" style="font-family: SourceSerifPro;">
+
+    <div class="px-6 py-4">
+      <div class="text-base" style="font-family: SourceSerifPro;"><a href="/reflexion" style="color: inherit; text-decoration: inherit;">Reflexion</a></div>
+      <hr style="border: 1px solid #CE0DEA;">
+      <% if post.title.present? %>
+        <div class="font-bold text-xl text-center mb-1 mt-16"><%= post.title %></div>
+        <div class="italic text-base text-center mb-10">21. August 2019</div>
+      <% end %>
+      <div class="text-justify text-xl" style="font-family: SourceSerifPro;">
+        <%= post.content %>
+      </div>
+    </div>
+  </div>
+</div>

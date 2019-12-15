@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :require_login
 
   def index
+    @posts = Post.all
   end
 
   def new
@@ -12,17 +13,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
-    if @post.save
-      redirect_to @post
-    else
-      render :edit
-    end
-  end
-
-  def show
-    @post = Post.find_by_slug(params[:id])
-    redirect_to "/#{@post.category}/#{params[:id]}"
+    @post.save
+    render :edit
   end
 
   def edit
@@ -33,7 +25,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by_slug(params[:id])
     @post.update!(post_params)
-    redirect_to @post
+    render :edit
   end
 
   def destroy

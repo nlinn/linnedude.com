@@ -1,5 +1,25 @@
 <div class="flex justify-center">
-  <div class="max-w-l m-4">
+  <div class="max-w-xl  m-4">
     <%= render "form" %>
+
+    <% @post.post_labels.each do |post_label| %>
+      <div class="flex">
+        <div class="flex-1 p-1"><%= render 'labels/label', label: post_label.label %></div>
+        <div class="flex-1 p-1"><%= link_to 'delete', post_label_path(post_label), method: :delete, data: {confirm: 'delete?'} %></div>
+      </div>
+    <% end %>
+
+    <%= form_with model: PostLabel.new, local: true  do |form| %>
+      <%= form.hidden_field :post_id, value: @post.id %>
+      <p class="mb-4">
+        <%= form.label :label_id, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.select :label_id, Label.all.collect {|p| [ p.name, p.id ] } %>
+      </p>
+       <p>
+        <%= form.submit %>
+      </p>
+    <% end %>
+    <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
   </div>
+  
 </div>

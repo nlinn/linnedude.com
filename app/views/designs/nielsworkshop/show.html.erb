@@ -1,0 +1,5 @@
+<% if @post.draft? %>
+  <div class="text-red">DRAFT</div>
+<% end %>
+
+<%= render 'designs/nielsworkshop/post_card', post: @post %>

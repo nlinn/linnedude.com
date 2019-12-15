@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_170603) do
+ActiveRecord::Schema.define(version: 2019_12_15_142946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,19 @@ ActiveRecord::Schema.define(version: 2019_06_06_170603) do
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "bg_color", default: "#5319e7", null: false
+    t.string "text_color", default: "#ffffff", null: false
+    t.boolean "public", default: true, null: false
+    t.integer "sort", default: 0, null: false
+  end
+
+  create_table "post_labels", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "label_id", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
@@ -96,6 +109,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_170603) do
     t.string "slug"
     t.integer "category", default: 0, null: false
     t.boolean "published", default: false, null: false
+    t.string "design", default: "default", null: false
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 

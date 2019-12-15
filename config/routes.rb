@@ -14,14 +14,20 @@ Rails.application.routes.draw do
   #get "/sign_up" => "clearance/users#new", as: "sign_up"
   root :to => 'home#index'
 
-  resources :posts
+  resources :posts, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :labels
+  resources :post_labels, only: [:create, :destroy]
+
+  get '/read/:slug' => 'read#show'
+  get '/label/:label' => 'read#label'
 
   get '/nielsworkshop'      => 'nielsworkshop#index'
   get '/nielsworkshop/links'  => 'nielsworkshop#links'
   get '/nielsworkshop/:id'  => 'nielsworkshop#show'
 
+  get '/reflexion'  => 'reflexion#index'
+  get '/reflexion/:id'  => 'reflexion#show'
+
   get '/notes'      => 'notes#index'
   get '/notes/:id'  => 'notes#show'
-
-  #get '/:category/:id' => 'posts#show'
 end

@@ -1,0 +1,5 @@
+<div class="text-center"><h1><%= @title %></h1></div>
+
+<% @posts.each do |post| %>
+  <%= render "/designs/#{post.design}/index", post: post %>
+<% end %>

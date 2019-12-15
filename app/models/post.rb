@@ -3,10 +3,16 @@ class Post < ApplicationRecord
   has_many_attached :images
   has_rich_text :content
 
+  has_many :post_labels
+  has_many :labels, through: :post_labels
+
   validates_presence_of :title
   validates_presence_of :category
+  validates_presence_of :slug
+  validates_uniqueness_of :slug
+  validates_presence_of :design
 
-  enum category: {nielsworkshop: 0, notes: 1}
+  enum category: {nielsworkshop: 0, notes: 1, reflexion: 2}
 
   before_save :set_published_at, if: :published
   before_validation :set_title
@@ -35,7 +41,8 @@ class Post < ApplicationRecord
   end
 
   def set_slug
-    self.slug = self.title.parameterize
+    #self.slug = self.title.parameterize
+    self.slug = SecureRandom.urlsafe_base64(6)
   end
 
 end
