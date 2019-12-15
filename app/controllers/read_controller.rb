@@ -5,7 +5,7 @@ class ReadController < ApplicationController
     if @post
       show_post     
     else
-      @label = Label.is_public.where("lower(name) = ?", params[:slug].downcase).first
+      @label = Label.is_public.find_by(slug: params[:slug])
       if @label
         show_label
       else

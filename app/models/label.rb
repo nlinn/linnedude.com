@@ -7,8 +7,12 @@ class Label < ApplicationRecord
 
   validates_uniqueness_of :name, case_sensitive: false
   validates_presence_of :name
+  validates_presence_of :slug
+  validates_uniqueness_of :slug
 
-  def slug
-    name.downcase
+  before_validation :set_slug
+
+  def set_slug
+    self.slug = self.name.parameterize
   end
 end

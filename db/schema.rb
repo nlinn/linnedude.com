@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_15_142946) do
+ActiveRecord::Schema.define(version: 2019_12_15_230350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_12_15_142946) do
     t.string "text_color", default: "#ffffff", null: false
     t.boolean "public", default: true, null: false
     t.integer "sort", default: 0, null: false
+    t.string "slug"
   end
 
   create_table "post_labels", force: :cascade do |t|

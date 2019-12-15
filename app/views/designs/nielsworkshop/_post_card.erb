@@ -11,7 +11,12 @@
       <p class="text-gray-700 text-base">
         <%= post.content %>
       </p>
-      <a class="u-url float-right text-xs" href="/nielsworkshop/<%= post.slug %>">permalink</a>
+      <div class="mt-2">
+      <% post.labels.each do |label| %>
+        <%= render 'read/label', label: label %>
+      <% end %>
+    </div>
+      <a class="u-url float-right text-xs" href="/read/<%= post.slug %>">permalink</a>
       <p class="uppercase text-gray-500 text-xs mt-2"><%= post.published_at.present? ? l(post.published_at, format: :default) : '' %></p>
     </div>
   </div>
