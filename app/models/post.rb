@@ -18,9 +18,10 @@ class Post < ApplicationRecord
   before_validation :set_title
   before_validation :set_slug
 
-  scope :published, -> {
-    where(published: true)
-  }
+  scope :published, -> { where(published: true) }
+  scope :sorted, -> { order(published_at: :desc) }
+
+
 
   def to_param
     slug
