@@ -22,7 +22,7 @@ class ReadController < ApplicationController
   end
 
   def show_label
-    @posts = @label.posts.published  
+    @posts = @label.posts.published.sorted  
     @title = @label.name    
     render :index
   end
