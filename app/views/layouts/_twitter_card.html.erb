@@ -1,5 +1,9 @@
 <% if content_for?(:og_title) %>
-  <meta name="twitter:card" content="summary" />
+  <% if content_for?(:og_type) %>
+    <meta name="twitter:card" content="<%= yield(:og_type) %>" />
+  <% else %>  
+    <meta name="twitter:card" content="summary" />
+  <% end %>
   <meta name="twitter:site" content="@linnedude" />
   <meta name="twitter:creator" content="@linnedude" />
   <meta property="og:url" content="<%= yield(:og_url) %>" />
