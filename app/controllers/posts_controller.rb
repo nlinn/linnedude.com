@@ -13,7 +13,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
+    if @post.save
+      if params[:post][:photos]
+          params[:post][:photos].each do |photo|
+            Photo.create(post: @post, file: photo)
+          end
+      end
+    end
     render :edit
   end
 
@@ -24,7 +30,13 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by_slug(params[:id])
-    @post.update!(post_params)
+    if @post.update(post_params)
+      if params[:post][:photos]
+          params[:post][:photos].each do |photo|
+            Photo.create(post: @post, file: photo)
+          end
+      end
+    end
     render :edit
   end
 
@@ -37,6 +49,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :design, :published, :published_at, images: [])
+    params.require(:post).permit(:title, :content, :design,
+      :published, :published_at)
   end
 end

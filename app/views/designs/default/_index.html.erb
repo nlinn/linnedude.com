@@ -10,7 +10,7 @@
       </div>
 
       <div class="font-bold text-lg mb-2"><a href="/read/<%= post.slug %>"><span class="text-gray-900"><%= post.title %></span></a></div>
-      <a class="u-url float-right text-xs font-bold" href="/read/<%= post.slug %>">lesen</a>
+      <a class="u-url float-right text-xs font-bold border p-1" href="/read/<%= post.slug %>">lesen</a>
       <div class="mt-2">
       <% post.labels.each do |label| %>
         <%= render 'read/label', label: label %>

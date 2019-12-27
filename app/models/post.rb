@@ -1,5 +1,8 @@
 class Post < ApplicationRecord
 
+  has_many :photos, dependent: :destroy    
+  accepts_nested_attributes_for :photos, allow_destroy: true
+
   has_many_attached :images
   has_rich_text :content
 
@@ -12,11 +15,9 @@ class Post < ApplicationRecord
   validates_uniqueness_of :slug
   validates_presence_of :design
 
-  enum category: {nielsworkshop: 0, notes: 1, reflexion: 2}
-
   before_save :set_published_at, if: :published
   before_validation :set_title
-  before_validation :set_slug
+  before_validation :set_slug, on: :create
 
   scope :published, -> { where(published: true) }
   scope :sorted, -> { order(published_at: :desc) }
@@ -42,8 +43,7 @@ class Post < ApplicationRecord
   end
 
   def set_slug
-    #self.slug = self.title.parameterize
-    self.slug = SecureRandom.urlsafe_base64(6)
+    self.slug = SecureRandom.urlsafe_base64(6) if self.slug.blank?
   end
 
 end

@@ -2,6 +2,7 @@
   <%= @post.errors.full_messages %>
 <% end %>
 <%= form_with model: @post, local: true  do |form| %>
+
   <p class="mb-4">
     <%= form.label :design, class: "block text-gray-700 text-sm font-bold mb-2" %>
     <%= form.select :design, Design.all %>
@@ -14,8 +15,13 @@
   </p>
 
   <p class="mb-4">
-    <%= form.label :images, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= form.file_field :images, multiple: true %>
+    <%= form.label :photos, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <% form.object.photos.each do |photo| %>
+      <%= image_tag photo.file_url(:small) %>
+      <%= link_to "delete", photo_path(photo), method: :delete, data: { confirm: "delete?"} %>
+    <% end %>
+    <br>
+    <%= form.file_field :photos, multiple: true %>
   </p>
 
   <p class="mb-4">

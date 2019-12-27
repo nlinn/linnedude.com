@@ -1,8 +1,8 @@
 <div class="flex justify-center mb-4">
 
   <div class="max-w-xl rounded overflow-hidden shadow-lg">
-    <% if post.images.any? %>
-      <%= image_tag post.images.first, class: "w-full" %>
+    <% if post.photos.any? %>
+      <%= image_tag post.photos.first.file_url(:m_square), class: "w-full" %>
     <% end %>
     <div class="px-6 py-4">
       <% if post.title.present? %>

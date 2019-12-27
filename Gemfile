@@ -42,6 +42,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'ahoy_matey'
+gem "shrine", "~> 3.0"
+gem 'image_processing'
+# Required for image versioning
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

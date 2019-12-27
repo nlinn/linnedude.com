@@ -15,19 +15,10 @@ Rails.application.routes.draw do
   root :to => 'home#index'
 
   resources :posts, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :photos, only: [:index, :destroy]
   resources :labels
   resources :post_labels, only: [:create, :destroy]
 
   get '/read/:slug' => 'read#show'
   get '/label/:label' => 'read#label'
-
-  get '/nielsworkshop'      => 'nielsworkshop#index'
-  get '/nielsworkshop/links'  => 'nielsworkshop#links'
-  get '/nielsworkshop/:id'  => 'nielsworkshop#show'
-
-  get '/reflexion'  => 'reflexion#index'
-  get '/reflexion/:id'  => 'reflexion#show'
-
-  get '/notes'      => 'notes#index'
-  get '/notes/:id'  => 'notes#show'
 end

@@ -1,0 +1,6 @@
+<% @photos.each do |photo| %>
+  <div class="border-b p-4">
+    <%= image_tag photo.file_url(:small) %>
+    <%= link_to "delete", photo_path(photo), method: :delete, data: { confirm: "delete?"} %>
+  </div>
+<% end %>

@@ -8,7 +8,7 @@
       <div class="flex-1 p-1"><%= link_to 'delete', post_label_path(post_label), method: :delete, data: {confirm: 'delete?'} %></div>
     </div>
   <% end %>
-
+  <hr class="border border-black mt-6 mb-6">
   <%= form_with model: PostLabel.new, local: true  do |form| %>
     <%= form.hidden_field :post_id, value: @post.id %>
     <p class="mb-4">
@@ -19,5 +19,8 @@
       <%= form.submit %>
     </p>
   <% end %>
+  <hr class="border border-black mt-6 mb-6">
+  <%= link_to 'view', "/read/#{@post.slug}" %>
+  <hr class="border border-black mt-6 mb-6">
   <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 </div>

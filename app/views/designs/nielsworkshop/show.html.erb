@@ -2,6 +2,7 @@
 <% content_for(:og_title, @post.title) %>
 <% content_for(:og_url, "https://www.linnedude.com/read/#{@post.slug}") %>
 <% content_for(:og_description, @post.content.to_plain_text[0..199]) %>
-<% content_for(:og_image, rails_blob_url(@post.images.first)) %>
-
+<% if @post.photos.any? %>
+  <% content_for(:og_image, @post.photos.first.file_url(:small)) %>
+<% end %>
 <%= render 'designs/nielsworkshop/post_card', post: @post %>
