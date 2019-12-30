@@ -1,37 +1,38 @@
 <div class="w-full max-w-3xl mx-auto">
-<div class="w-full max-w-xl mx-auto mb-5 p-2">
-  <h1 class="font-bold text-xl mb-1">All Posts</h1>
-  <div class="text-base"><strong><%= @posts.size %></strong> posts</div>
-</div>
-<%= link_to 'add post', new_post_path, class: "my-button" %>
-<% @posts.each do |post| %>
-  <div class="max-w-3xl rounded overflow-hidden shadow-lg">
-    <div class="flex m-3 ">
-      <div class="flex-grow p-2">
-        <div><%= link_to post.title, edit_post_path(post) %></div>
-        <div>
-          <% post.photos.each do |photo| %>
-            <%= image_tag photo.file_url(:s_square), class: "inline mr-1" %>
-          <% end %>
+  <div class="w-full max-w-xl mx-auto mb-5 p-2">
+    <h1 class="font-bold text-xl mb-1">All Posts</h1>
+    <div class="text-base"><strong><%= @posts.size %></strong> posts</div>
+  </div>
+  <%= link_to 'add post', new_post_path, class: "my-button" %>
+  <% @posts.each do |post| %>
+    <div class="max-w-3xl rounded overflow-hidden shadow-lg">
+      <div class="flex m-3 ">
+        <div class="flex-grow p-2">
+          <div><%= link_to post.title, edit_post_path(post) %></div>
+          <div>
+            <% post.photos.each do |photo| %>
+              <%= image_tag photo.file_url(:s_square), class: "inline mr-1" %>
+            <% end %>
+          </div>
+          <div>
+            <% post.labels.each do |label| %>
+              <%= render 'labels/label', label: label %>
+            <% end %>
+            <span class="my-label">design: <%= post.design %></span>
+            <% unless post.published %>
+              <span class="my-label text-red-700">DRAFT</span>
+            <% end %>
+            <span class="my-label"><%= Ahoy::Event.where_event("Post viewed", post_id: post.id).count %> views</span>
+          </div>
+          
         </div>
-        <div>
-          <% post.labels.each do |label| %>
-            <%= render 'labels/label', label: label %>
-          <% end %>
-          <span class="my-label">design: <%= post.design %></span>
-          <% unless post.published %>
-            <span class="my-label text-red-700">DRAFT</span>
-          <% end %>
-          <span class="my-label"><%= Ahoy::Event.where_event("Post viewed", post_id: post.id).count %> views</span>
+        <div class="flex-1 p-2 text-right">
+          <%= link_to 'view', "/read/#{post.slug}" %>
+          <%= link_to 'edit', edit_post_path(post) %>
+          <%= link_to 'delete', post_path(post), method: :delete, data: {confirm: 'delete?'} %>
         </div>
-        
-      </div>
-      <div class="flex-1 p-2 text-right">
-        <%= link_to 'view', "/read/#{post.slug}" %>
-        <%= link_to 'edit', edit_post_path(post) %>
-        <%= link_to 'delete', post_path(post), method: :delete, data: {confirm: 'delete?'} %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+  <div class="mt-5"><%= will_paginate @posts %></div>
 </div>

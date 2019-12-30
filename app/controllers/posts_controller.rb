@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :require_login
 
   def index
-    @posts = Post.all.order(updated_at: :desc)
+    @posts = Post.all.order(updated_at: :desc).paginate(page: params[:page])
   end
 
   def new

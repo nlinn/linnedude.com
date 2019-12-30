@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   before_action :require_login
 
   def index
-    @photos = Photo.all.order(updated_at: :desc)
+    @photos = Photo.all.order(updated_at: :desc).paginate(page: params[:page])
   end
 
   # DELETE /photos/1

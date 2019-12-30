@@ -5,3 +5,4 @@
 <% @posts.each do |post| %>
   <%= render "/designs/#{post.design}/index", post: post %>
 <% end %>
+<div class="mt-5 text-center"><%= will_paginate @posts %></div>

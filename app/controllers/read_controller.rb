@@ -22,7 +22,7 @@ class ReadController < ApplicationController
   end
 
   def show_label
-    @posts = @label.posts.published.sorted  
+    @posts = @label.posts.published.sorted.paginate(page: params[:page])  
     @title = @label.name    
     render :index
   end

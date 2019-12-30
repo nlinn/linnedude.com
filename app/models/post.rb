@@ -22,8 +22,6 @@ class Post < ApplicationRecord
   scope :published, -> { where(published: true) }
   scope :sorted, -> { order(published_at: :desc) }
 
-
-
   def to_param
     slug
   end
