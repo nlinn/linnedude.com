@@ -4,7 +4,7 @@ if Rails.env.production?
   base_s3_options = {
     access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
     secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
-    region: 'us-east-1',
+    region: 'eu-central-1',
     bucket: 'linnedude.com',
   }
 
@@ -13,11 +13,7 @@ if Rails.env.production?
   )
 
   store_s3_options = base_s3_options.merge(
-    public: true,
     prefix: "store",
-    upload_options: {
-      cache_control: "public, max-age=1209600"
-    }
   )
 
   Shrine.storages = {
