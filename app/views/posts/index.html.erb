@@ -8,7 +8,12 @@
     <div class="max-w-3xl rounded overflow-hidden shadow-lg">
       <div class="flex m-3 ">
         <div class="flex-grow p-2">
-          <div><%= link_to post.title, edit_post_path(post) %></div>
+          <div>
+            <% if post.title.present? %>
+              <div><%= link_to post.title, edit_post_path(post) %></div>
+            <% end %>
+            <%= truncate(post.content.to_plain_text, length: 100) %>
+          </div>
           <div>
             <% post.photos.each do |photo| %>
               <%= image_tag photo.file_url(:s_square), class: "inline mr-1" %>

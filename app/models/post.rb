@@ -9,14 +9,14 @@ class Post < ApplicationRecord
   has_many :post_labels
   has_many :labels, through: :post_labels
 
-  validates_presence_of :title
+  #validates_presence_of :title
   validates_presence_of :category
   validates_presence_of :slug
   validates_uniqueness_of :slug
   validates_presence_of :design
 
   before_save :set_published_at, if: :published
-  before_validation :set_title
+  #before_validation :set_title
   before_validation :set_slug, on: :create
 
   scope :published, -> { where(published: true) }
