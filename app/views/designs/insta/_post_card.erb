@@ -12,7 +12,7 @@
         <%= post.content %>
       </p>
       <div class="mt-2">
-      <% post.labels.each do |label| %>
+      <% post.labels.sorted.is_public.each do |label| %>
         <%= render 'read/label', label: label %>
       <% end %>
     </div>
