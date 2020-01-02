@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   #get "/sign_up" => "clearance/users#new", as: "sign_up"
   root :to => 'home#index'
 
-  resources :posts, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :posts, only: [:index, :new, :create, :edit, :update, :destroy] do
+    get :stats
+  end
+  
   resources :photos, only: [:index, :destroy]
   resources :labels
   resources :post_labels, only: [:create, :destroy]

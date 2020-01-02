@@ -1,0 +1,23 @@
+<%= render 'index', post: @post %>
+<h1 class="mt-4 mb-2">Recent views</h1>
+<% @events.each do |event| %>
+  <div class="text-sm mb-2">  
+    <%= I18n.l(event.time) %>
+    <%= event.id  %>
+    <%= event.user_id  %>
+    <% if event.user_id %>
+      <%= User.find_by(id: event.user_id).try(:email) %>
+    <% end %>
+    <% if event.visit_id %>
+      <% visit = event.visit %>
+      <div class="ml-2 text-xs">
+        <%= visit.id %>,
+        <%= visit.browser %>,
+        <%= visit.device_type %>,
+        <%= visit.os %>,
+        <%= visit.referrer %>,
+        <%= visit.user_agent %>
+      </div>
+    <% end %>  
+  </div>  
+<% end %>

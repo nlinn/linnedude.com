@@ -46,6 +46,12 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def stats
+    @post = Post.find_by_slug(params[:post_id])
+    @events = Ahoy::Event.where_event("Post viewed", post_id: @post.id).order(time: :desc).limit(20)
+    render :stats
+  end
+
   private
 
   def post_params
