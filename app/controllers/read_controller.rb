@@ -3,7 +3,7 @@ class ReadController < ApplicationController
   def show
     @post = Post.find_by_slug(params[:slug])
     if @post
-      show_post     
+      show_post
     else
       @label = Label.is_public.find_by(slug: params[:slug])
       if @label
@@ -24,8 +24,11 @@ class ReadController < ApplicationController
   def show_label
     @posts = @label.posts.published.sorted.paginate(page: params[:page])
     @posts_count = @label.posts.published.sorted.size
-    @title = @label.name    
-    render :index
-  end
+    @title = @label.name
 
+    respond_to do |format|
+      format.html { render :index }
+      format.rss { render :index, :layout => false }
+    end
+  end
 end

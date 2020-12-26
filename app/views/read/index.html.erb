@@ -1,3 +1,5 @@
+<% content_for :feed_url, "/read/#{@title}.rss" %>
+
 <div class="w-full max-w-xl mx-auto mb-5 p-2">
   <h1 class="font-bold text-xl mb-1"><%= @title %></h1>
   <div class="text-base"><strong><%= @posts_count %></strong> Beiträge</div>

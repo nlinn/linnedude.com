@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
 
-  has_many :photos, dependent: :destroy    
+  has_many :photos, dependent: :destroy
   accepts_nested_attributes_for :photos, allow_destroy: true
 
   has_many_attached :images
@@ -43,5 +43,4 @@ class Post < ApplicationRecord
   def set_slug
     self.slug = SecureRandom.urlsafe_base64(6) if self.slug.blank?
   end
-
 end

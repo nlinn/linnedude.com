@@ -14,13 +14,16 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag "application", 'data-turbolinks-track': 'reload' %>
 
+    <% if content_for?(:feed_url) %>
+      <%= auto_discovery_link_tag :rss, yield(:feed_url) %>
+    <% end %>
   </head>
 
   <body class="bg-gray-100">
     <div class="p-6"><%= yield %></div>
     <% if current_user %>
       <div class="footer">
-        Logged in: <%= current_user.email %>        
+        Logged in: <%= current_user.email %>
         <span style="margin-left: 25px" ><%= link_to "New post", new_post_path %></span>
         <a style="margin-left: 25px" href="/posts">All Posts</a>
         <a style="margin-left: 25px"  href="/labels">All Labels</a>
