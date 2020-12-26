@@ -10,8 +10,8 @@ xml.rss :version => "2.0" do
         xml.title post.title
         xml.description post.content.body.to_s
         xml.pubDate post.published_at.to_s(:rfc822)
-        xml.link "/read/#{post.slug}"
-        xml.guid "/read/#{post.slug}"
+        xml.link "#{root_url}read/#{post.slug}"
+        xml.guid "#{root_url}read/#{post.slug}"
       end
     end
   end
