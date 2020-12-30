@@ -3,6 +3,6 @@
 <% content_for(:og_url, "https://www.linnedude.com/read/#{@post.slug}") %>
 <% content_for(:og_description, @post.content.to_plain_text[0..199]) %>
 <% if @post.photos.any? %>
-  <% content_for(:og_image, @post.photos.first.file_url(:small)) %>
+  <% content_for(:og_image, @post.photos.first.file_url(:large)) %>
 <% end %>
 <%= render 'designs/insta/post_card', post: @post %>
