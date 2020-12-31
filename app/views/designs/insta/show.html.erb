@@ -5,4 +5,12 @@
 <% if @post.photos.any? %>
   <% content_for(:og_image, @post.photos.first.file_url(:large)) %>
 <% end %>
+<style>
+.swiper-container {
+    width: 600px;
+    height: 300px;
+}
+
+</style>
+
 <%= render 'designs/insta/post_card', post: @post %>

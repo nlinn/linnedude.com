@@ -1,0 +1,22 @@
+<div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <% photos.each do |photo| %>
+          <div class="swiper-slide">
+            <%= image_tag photo.file_url(:m_square), class: "w-full button-next" %>
+          </div>
+        <% end %>
+    </div>
+    <!-- If we need pagination -->
+
+
+    <!-- If we need navigation buttons
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+     If we need scrollbar
+    <div class="swiper-scrollbar"></div>-->
+</div>
+<style> .swiper-pagination-bullet { margin: 0 2px;}</style>
+<div style="text-align: center;"><div class="swiper-pagination" style="position: relative;"></div></div>
