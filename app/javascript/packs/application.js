@@ -22,7 +22,6 @@ require("@rails/actiontext")
 
 import "../css/application.css"
 
-
 document.addEventListener('turbolinks:load', () => {
   var mySwiper = new Swiper('.swiper-container', {
     // Optional parameters
