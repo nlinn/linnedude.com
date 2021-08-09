@@ -24,6 +24,10 @@
     <%= form.check_box :public %>
     <%= form.label :public, class: "text-gray-700 text-sm font-bold mb-2" %>
   </p>
+
+  <p class="mb-4">
+    <%= form.rich_text_area :description %>
+  </p>
   <p>
     <%= form.submit %>
   </p>

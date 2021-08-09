@@ -30,6 +30,10 @@ class Post < ApplicationRecord
     !published
   end
 
+  def highest_prio_label_with_description
+    @highest_prio_label_with_description ||= labels.sorted.is_public.with_description.first
+  end
+
   private
 
   def set_published_at

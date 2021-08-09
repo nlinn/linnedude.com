@@ -28,7 +28,7 @@ class LabelsController < ApplicationController
 
   def update
     @label = Label.find(params[:id])
-    if @label.update(label_params)      
+    if @label.update(label_params)
       redirect_to labels_path
     else
       render :edit
@@ -44,6 +44,6 @@ class LabelsController < ApplicationController
   private
 
   def label_params
-    params.require(:label).permit(:name, :public, :sort, :text_color, :bg_color)
+    params.require(:label).permit(:name, :public, :sort, :text_color, :bg_color, :description)
   end
 end

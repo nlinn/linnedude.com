@@ -1,6 +1,9 @@
 <% if @post.errors.any? %>
   <%= @post.errors.full_messages %>
 <% end %>
+
+<%= turbo_frame_tag "post" do %>
+
 <%= form_with model: @post, local: true  do |form| %>
 
   <p class="mb-4">
@@ -43,4 +46,5 @@
   <p>
     <%= form.submit %>
   </p>
+<% end %>
 <% end %>

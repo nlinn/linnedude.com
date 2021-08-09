@@ -17,8 +17,13 @@
 
 console.log('Hello World from Webpacker')
 
+import "@hotwired/turbo-rails"
+
 require("trix")
 require("@rails/actiontext")
+
+
+//= require turbolinks//= require turbolinks
 
 import "../css/application.css"
 
@@ -46,3 +51,5 @@ document.addEventListener('turbolinks:load', () => {
     //},
   })
 });
+
+import "controllers"
