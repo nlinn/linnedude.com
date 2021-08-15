@@ -27,7 +27,13 @@ require("@rails/actiontext")
 
 import "../css/application.css"
 
-document.addEventListener('turbolinks:load', () => {
+import Swiper from 'swiper';
+import 'swiper/swiper-bundle.css';
+import SwiperCore, { Navigation, Pagination } from 'swiper/core';
+SwiperCore.use([Navigation, Pagination]);
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Turbolinks:load');
   var mySwiper = new Swiper('.swiper-container', {
     // Optional parameters
     //direction: 'vertical',
