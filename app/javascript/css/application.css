@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'SourceSerifPro';
-  src:  url('/assets/fonts/SourceSerifPro-Regular.otf.woff2') format('woff2');
+  src:  url('/fonts/SourceSerifPro-Regular.otf.woff2') format('woff2');
 }
 
 a {
@@ -53,11 +53,11 @@ div.text-field, div.password-field, div.submit-field {
 }
 
 .my-label-intro, .my-label {
-  height: 20px; 
+  height: 20px;
   padding: .15em 4px;
   font-size: 12px;
   font-weight: 600;
-  line-height: 15px;  
+  line-height: 15px;
 }
 
 .my-label {
