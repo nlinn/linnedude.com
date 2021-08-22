@@ -22,12 +22,22 @@
 
 
       <% if post.highest_prio_label_with_description.present? %>
-        <div class="text-justify text-xl p-4 mt-6" style="font-family: SourceSerifPro; border: 1px solid #CE0DEA;">
+        <div class="text-xl p-4 mt-6" style="font-family: SourceSerifPro; border: 1px solid #CE0DEA;">
+          <div class="font-bold"><%= post.highest_prio_label_with_description.name %></div>
           <%= post.highest_prio_label_with_description.description %>
-          <div class="mt-3"><%= render 'read/labels', post: post %></div>
+          <a href="/read/<%= post.highest_prio_label_with_description.slug %>">Alle Beiträge &rarr;</a>
+          <div class="mt-3">
+            <% post.labels.sorted.is_public.each do |label| %>
+              <%= render 'read/label', label: label %>
+            <% end %>
+          </div>
         </div>
       <% else %>
-        <div class="mt-3"><%= render 'read/labels', post: post %></div>
+        <div class="mt-3">
+          <% post.labels.sorted.is_public.each do |label| %>
+            <%= render 'read/label', label: label %>
+          <% end %>
+        </div>
       <% end %>
 
     </div>

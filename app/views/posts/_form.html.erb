@@ -20,8 +20,10 @@
   <p class="mb-4">
     <%= form.label :photos, class: "block text-gray-700 text-sm font-bold mb-2" %>
     <% form.object.photos.each do |photo| %>
-      <%= image_tag photo.file_url(:small) %>
-      <%= link_to "delete", photo_path(photo), method: :delete, data: { confirm: "delete?"} %>
+      <div class="inline-block">
+        <%= image_tag photo.file_url(:small) %>
+        <%= link_to "delete", photo_path(photo), method: :delete, data: { confirm: "delete?"} %>
+      </div>
     <% end %>
     <br>
     <%= form.file_field :photos, multiple: true %>
