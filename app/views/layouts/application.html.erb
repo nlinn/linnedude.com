@@ -23,16 +23,13 @@
       <%= auto_discovery_link_tag :rss, yield(:feed_url) %>
     <% end %>
 
-    <lllink rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <sssscript src="https://unpkg.com/swiper/swiper-bundle.min.js"></sssscript>
-
     <link rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css">
 
   </head>
 
   <body class="bg-gray-100">
-    <div class="p-6"><%= yield %></div>
+    <div class="p-2"><%= yield %></div>
     <% if current_user %>
       <div class="footer">
         Logged in: <%= current_user.email %>
