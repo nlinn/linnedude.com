@@ -1,6 +1,6 @@
 <% content_for(:og_title, @post.title) %>
 <% content_for(:og_url, "https://www.linnedude.com/read/#{@post.slug}") %>
-<% content_for(:og_description, @post.content.to_plain_text[0..199]) %>
+<% content_for(:og_description, truncate(@post.content.to_plain_text, length: 180)) %>
 
 <div class="h-entry flex justify-center mb-5">
 

@@ -1,3 +1,11 @@
+<% content_for(:og_type, "summary") %>
+<% content_for(:og_title, @post.title) %>
+<% content_for(:og_url, "https://www.linnedude.com/read/#{@post.slug}") %>
+<% content_for(:og_description, truncate(@post.content.to_plain_text, length: 180)) %>
+<% if @post.photos.any? %>
+  <% content_for(:og_image, @post.photos.first.file_url(:large)) %>
+<% end %>
+
 <% post = @post %>
 <% main_label = post.labels.is_public.sorted.first %>
 <div class="flex justify-center mb-4">
