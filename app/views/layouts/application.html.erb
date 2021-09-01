@@ -34,7 +34,7 @@
       <div class="footer">
         Logged in: <%= current_user.email %>
 
-        <% if @post %>
+        <% if @post&.id %>
           <span style="margin-left: 25px" ><%= link_to "Edit this post", edit_post_path(@post) %></span>
         <% end %>
 
