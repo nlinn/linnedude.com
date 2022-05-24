@@ -1,0 +1,18 @@
+<% unless paragraph.first? %>
+  <div class="text-center" style="margin: 3rem 0 5rem 0; color: #888;">•·················•·················•</div>
+  <% if paragraph.photos.size > 1 %>
+    <div class="mb-6">
+      <%= render 'partials/photo_swiper', photos: paragraph.photos %>
+    </div>
+  <% elsif paragraph.photos.size == 1 %>
+    <div class="mb-6">
+      <%= image_tag paragraph.photos.first.file_url(:m_square), class: "w-full" %>
+    </div>
+  <% end %>
+  <% if paragraph.headline.present? %>
+  <h2 class="mb-3 text-xl font-bold"><%= paragraph.headline %></h2>
+  <% end %>
+<% end %>
+<div class="mb-6">
+  <%= markdown(paragraph.content) %>
+</div>

@@ -26,6 +26,9 @@
       <% end %>
       <div class="text-justify text-xl" style="font-family: SourceSerifPro;">
         <%= post.content %>
+        <% post.paragraphs.sorted.each do |paragraph| %>
+          <%= render "designs/reflexion/paragraph", paragraph: paragraph %>
+        <% end %>
       </div>
 
 

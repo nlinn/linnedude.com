@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :new, :create, :edit, :update, :destroy] do
     get :stats
   end
-  
+
+  resources :paragraphs
   resources :photos, only: [:index, :destroy]
   resources :labels
   resources :post_labels, only: [:create, :destroy]

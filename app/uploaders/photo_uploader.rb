@@ -1,8 +1,9 @@
 class PhotoUploader < Shrine
 
+  plugin :model, cache: false
   plugin :validation_helpers
   plugin :pretty_location
- 
+
   Attacher.validate do
     validate_max_size 5.megabytes, message: 'is too large (max is 2 MB)'
     validate_mime_type_inclusion ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
@@ -10,8 +11,8 @@ class PhotoUploader < Shrine
 
   Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
- 
-    { 
+
+    {
       large:  magick.resize_to_limit!(1200, 1200),
       medium: magick.resize_to_limit!(600, 600),
       small:  magick.resize_to_limit!(200, 200),

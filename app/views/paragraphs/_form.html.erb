@@ -1,0 +1,47 @@
+<% if @paragraph.errors.any? %>
+  <%= @paragraph.errors.full_messages %>
+<% end %>
+
+
+
+  <%= form_for @paragraph, local: true  do |form| %>
+    <p class="mb-4">
+      <%= form.label :position, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_field :position, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </p>
+    <p class="mb-4">
+      <%= form.label :headline, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_field :headline, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </p>
+
+    <p class="mb-4">
+      <%= form.label :sub_headline, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_field :sub_headline, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </p>
+
+
+
+<p class="mb-4">
+  <%= form.label :photos, class: "block text-gray-700 text-sm font-bold mb-2" %>
+  <% form.object.photos.each do |photo| %>
+    <div class="inline-block">
+      <%= image_tag photo.file_url(:small) %>
+      <%= link_to "delete", photo_path(photo), method: :delete, data: { confirm: "delete?"} %>
+    </div>
+  <% end %>
+  <br>
+  <%= form.file_field :photos, multiple: true %>
+</p>
+
+    <p class="mb-4">
+      <%= form.label :content, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_area :content, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", rows: 10 %>
+      <a href="https://apps.timwhitlock.info/emoji/tables/unicode">emojis</a>
+      Markdown Links: [label](url)
+    </p>
+
+    <p>
+      <%= form.submit class: "btn-primary" %>
+    </p>
+
+<% end %>

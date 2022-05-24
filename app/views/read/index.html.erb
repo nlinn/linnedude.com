@@ -6,7 +6,7 @@
   <% if @label.description.present? %>
     <div class="text-l mt-4 mb-4"><%= @label.description %></div>
   <% end %>
-  <div class="text-base"><strong><%= @posts_count %></strong> Beiträge</div>
+  <div class="text-base"><strong><%= @posts_count %></strong> Beiträge · <a href="<%= yield(:feed_url) %>"> RSS</a></div>
 </div>
 <% @posts.each do |post| %>
   <%= render "/designs/#{post.design}/index", post: post %>

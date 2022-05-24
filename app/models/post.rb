@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
 
+  has_many :paragraphs, dependent: :destroy
+
   has_many :photos, dependent: :destroy
   accepts_nested_attributes_for :photos, allow_destroy: true
 
@@ -32,6 +34,11 @@ class Post < ApplicationRecord
 
   def highest_prio_label_with_description
     @highest_prio_label_with_description ||= labels.sorted.is_public.with_description.first
+  end
+
+  def preview_text(renderer)
+    return nil unless paragraphs.first
+    Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(paragraphs.first.content)
   end
 
   private

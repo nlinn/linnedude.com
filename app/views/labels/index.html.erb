@@ -1,17 +1,19 @@
-<div class="text-center"><h1>Labels</h1></div>
-<div class="mb-6">
-  <%= link_to 'add label', new_label_path, class: "my-button" %>
-</div>
-<% @labels.each do |label| %>
-
-  <div class="flex">
-    <div class="flex-1 p-1"><%= render "label", label: label %></div>
-    <div class="flex-1 p-1">sort <%= label.sort %></div>
-    <div class="flex-1 p-1">posts <%= label.posts.count %></div>
-    <div class="flex-1 p-1">
-      <%= link_to 'view public', "/read/#{label.slug}" %>
-      <%= link_to 'edit', edit_label_path(label) %>
-      <%= link_to 'delete', label_path(label), method: :delete, data: {confirm: 'delete?'} %>
-    </div>
+<div class="admin-mainbody">
+  <h2 class="admin">Labels</h2>
+  <div class="mb-6">
+    <%= link_to 'add label', new_label_path, class: "my-button" %>
   </div>
-<% end %>
+  <% @labels.each do |label| %>
+
+    <div class="flex">
+      <div class="flex-1 p-1"><%= render "label", label: label %></div>
+      <div class="flex-1 p-1">sort <%= label.sort %></div>
+      <div class="flex-1 p-1">posts <%= label.posts.count %></div>
+      <div class="flex-1 p-1">
+        <%= link_to 'view public', "/read/#{label.slug}" %>
+        <%= link_to 'edit', edit_label_path(label) %>
+        <%= link_to 'delete', label_path(label), method: :delete, data: {confirm: 'delete?'} %>
+      </div>
+    </div>
+  <% end %>
+</div>

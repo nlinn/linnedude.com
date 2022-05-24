@@ -1,0 +1,25 @@
+<div class="admin-panel right">
+  <div class="basic">
+    <%= link_to 'View Post', "/read/#{post.slug}", target: "_blank", class: "btn-primary w100" %>
+  </div>
+  <div class="basic">
+    <h2 class="admin">Post Outline</h2>
+
+    <%= link_to post.title, edit_post_path(post) %>
+    <ol style="margin-bottom: 1rem;">
+      <% post.paragraphs.sorted.each do |paragraph| %>
+        <% if @paragraph == paragraph %>
+          <li style="font-weight: bold;">└ <%= link_to (truncate(paragraph.headline).presence || "no headline"), edit_paragraph_path(paragraph) %></li>
+        <% else %>
+          <li>└ <%= link_to (truncate(paragraph.headline).presence || "no headline"), edit_paragraph_path(paragraph) %></li>
+        <% end %>
+      <% end %>
+    </ol>
+
+    <%= form_with model: post.paragraphs.build, local: true do |form| %>
+      <%= form.hidden_field :post_id %>
+      <%= form.submit class: "btn-secondary", value: "Add Paragraph" %>
+    <% end %>
+
+  </div>
+</div>

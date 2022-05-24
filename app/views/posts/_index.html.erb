@@ -1,4 +1,4 @@
-<div class="max-w-3xl rounded overflow-hidden shadow-lg">
+<div class="admin-card">
   <div class="flex m-3 ">
     <div class="flex-grow p-2">
       <div>
@@ -9,6 +9,8 @@
           <div><%= link_to post.title, edit_post_path(post) %></div>
         <% end %>
         <%= truncate(post.content.to_plain_text, length: 100) %>
+        <hr>
+        <%= truncate(post.preview_text(Redcarpet::Markdown.new(Redcarpet::Render::StripDown)), length: 200) %>
       </div>
       <div>
         <% post.photos.each do |photo| %>
@@ -25,7 +27,7 @@
         <% end %>
         <span class="my-label"><%= link_to "#{Ahoy::Event.where_event("Post viewed", post_id: post.id).count} views", post_stats_path(post) %></span>
       </div>
-      
+
     </div>
     <div class="flex-1 p-2 text-right">
       <%= link_to 'view', "/read/#{post.slug}" %>

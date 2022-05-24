@@ -1,7 +1,13 @@
-<% @photos.each do |photo| %>
-  <div class="border-b p-4">
-    <%= image_tag photo.file_url(:small) %>
-    <%= link_to "delete", photo_path(photo), method: :delete, data: { confirm: "delete?"} %>
-  </div>
-<% end %>
-<div class="mt-5"><%= will_paginate @photos %></div>
+<div class="admin-mainbody">
+  <h2 class="admin">Photos</h2>
+  <% @photos.each do |photo| %>
+    <div class="border-b p-4" style="display: inline-block;">
+      <%= image_tag photo.file_url(:small) %>
+      <% if photo.photoable %>
+        <%= link_to truncate(photo.photoable.post.title), edit_post_path(photo.photoable.post) %><br>
+      <% end %>
+      <%= link_to "delete", photo_path(photo), method: :delete, data: { confirm: "delete?"} %>
+    </div>
+  <% end %>
+  <div class="mt-5"><%= will_paginate @photos %></div>
+</div>

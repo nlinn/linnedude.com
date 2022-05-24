@@ -4,6 +4,8 @@ class PhotosController < ApplicationController
 
   def index
     @photos = Photo.all.order(updated_at: :desc).paginate(page: params[:page])
+
+    render :index, layout: "admin"
   end
 
   # DELETE /photos/1

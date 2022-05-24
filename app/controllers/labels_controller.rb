@@ -1,9 +1,10 @@
 class LabelsController < ApplicationController
-
+  layout "admin"
   before_action :require_login
 
   def index
     @labels = Label.sorted
+    render :index
   end
 
   def new

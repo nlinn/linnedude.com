@@ -1,9 +1,11 @@
-<div class="w-full max-w-3xl mx-auto">
-  <div class="w-full max-w-xl mx-auto mb-5 p-2">
-    <h1 class="font-bold text-xl mb-1">All Posts</h1>
+<div class="admin-mainbody">
+  <h2 class="admin">All Posts</h2>
+
     <div class="text-base"><strong><%= @posts.size %></strong> posts</div>
-  </div>
-  <%= link_to 'add post', new_post_path, class: "my-button" %>
+
+
+
+
   <% @posts.each do |post| %>
     <%= render 'index', post: post %>
   <% end %>

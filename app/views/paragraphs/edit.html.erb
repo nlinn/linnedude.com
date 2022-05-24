@@ -1,0 +1,13 @@
+<div class="admin-mainbody">
+  <div class="basic">
+    <h2 class="admin">Edit Paragraph <%= @paragraph.position %></h1>
+
+    <%= render "form" %>
+  </div>
+
+  <div class="basic">
+    <%= link_to "Delete Paragraph", paragraph_path(@paragraph), method: :delete, class: "btn-danger", data: {confirm: "Delete?"} %>
+  </div>
+</div>
+
+<%= render "posts/context_panel", post: @paragraph.post %>

@@ -1,26 +1,43 @@
 
-<div class="max-w-3xl  m-2">
-  <%= render "form" %>
 
-  <% @post.post_labels.each do |post_label| %>
-    <div class="flex">
-      <div class="flex-1 p-1"><%= render 'labels/label', label: post_label.label %></div>
-      <div class="flex-1 p-1"><%= link_to 'delete', post_label_path(post_label), method: :delete, data: {confirm: 'delete?'} %></div>
-    </div>
-  <% end %>
-  <hr class="border border-black mt-6 mb-6">
-  <%= form_with model: PostLabel.new, local: true  do |form| %>
-    <%= form.hidden_field :post_id, value: @post.id %>
-    <p class="mb-4">
-      <%= form.label :label_id, class: "block text-gray-700 text-sm font-bold mb-2" %>
-      <%= form.select :label_id, Label.all.collect {|p| [ p.name, p.id ] } %>
-    </p>
-     <p>
-      <%= form.submit %>
-    </p>
-  <% end %>
-  <hr class="border border-black mt-6 mb-6">
-  <%= link_to 'view', "/read/#{@post.slug}" %>
-  <hr class="border border-black mt-6 mb-6">
-  <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+
+<div class="admin-mainbody">
+
+  <div class="max-w-3xl  m-2">
+    <h2 class="admin">Edit Post</h2>
+    <%= render "form" %>
+
+
+    <% @post.post_labels.each do |post_label| %>
+      <div class="flex">
+        <div class="flex-1 p-1"><%= render 'labels/label', label: post_label.label %></div>
+        <div class="flex-1 p-1"><%= link_to 'delete', post_label_path(post_label), method: :delete, data: {confirm: 'delete?'} %></div>
+      </div>
+    <% end %>
+    <hr class="border border-black mt-6 mb-6">
+    <%= form_with model: PostLabel.new, local: true  do |form| %>
+      <%= form.hidden_field :post_id, value: @post.id %>
+      <p class="mb-4">
+        <%= form.label :label_id, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.select :label_id, Label.all.collect {|p| [ p.name, p.id ] } %>
+      </p>
+       <p>
+        <%= form.submit class: "btn-secondary", value: "Add Label" %>
+      </p>
+    <% end %>
+    <hr class="border border-black mt-6 mb-6">
+    <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+  </div>
+
+
+
+
 </div>
+
+<%= render "context_panel", post: @post %>
+
+
+
+
+
+

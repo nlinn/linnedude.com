@@ -18,6 +18,9 @@
       <% end %>
       <div class="e-content p-name text-gray-700 text-base mt-3">
         <%= @post.content %>
+        <% @post.paragraphs.sorted.each do |paragraph| %>
+          <%= markdown paragraph.content %>
+        <% end %>
       </div>
 
       <div class="mt-2">

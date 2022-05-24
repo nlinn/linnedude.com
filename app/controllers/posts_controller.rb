@@ -1,5 +1,7 @@
-class PostsController < ApplicationController
+require 'redcarpet/render_strip'
 
+class PostsController < ApplicationController
+  layout "admin"
   before_action :require_login
 
   def index
@@ -8,19 +10,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+
     render :new
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
-      if params[:post][:photos]
-          params[:post][:photos].each do |photo|
-            Photo.create(post: @post, file: photo)
-          end
-      end
-    end
-    render :edit
+    @post = Post.create(post_params)
+    redirect_to edit_post_path(@post)
   end
 
   def edit
